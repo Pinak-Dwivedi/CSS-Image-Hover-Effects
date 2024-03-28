@@ -1,0 +1,182 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.main {
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.container {
+  position: relative;
+  box-shadow: 0 1px 5px 0 #333;
+  border-radius: 5px;
+  overflow: hidden;
+
+  --transition-time: 300ms;
+}
+
+.container > .image {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.container > .content {
+  position: absolute;
+  inset: 0;
+  padding: 0.5em 1em;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: transform var(--transition-time) ease-in-out;
+}
+
+/* 1st */
+.container:nth-child(1) > .image {
+  filter: blur(0);
+  transition: filter var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(1) > .content {
+  transform: translateX(-100%);
+}
+
+.container:nth-child(1):hover .image {
+  filter: blur(5px);
+}
+
+.container:nth-child(1):hover .content {
+  transform: translateX(0);
+}
+
+/* 2nd */
+
+.container:nth-child(2) > .image {
+  transform: scale(1);
+  transition: transform var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(2) > .content {
+  transform: translateY(-100%);
+}
+
+.container:nth-child(2):hover .image {
+  transform: scale(1.1);
+}
+
+.container:nth-child(2):hover .content {
+  transform: translateY(0);
+}
+
+/* 3rd */
+
+.container:nth-child(3) > .image {
+  filter: blur(0);
+  transform: scale(1);
+  transition: transform, filter, var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(3) > .content {
+  transform: translateX(100%);
+}
+
+.container:nth-child(3):hover .image {
+  filter: blur(5px);
+  transform: scale(1.1);
+}
+
+.container:nth-child(3):hover .content {
+  transform: translateX(0);
+}
+
+/* 4th */
+
+.container:nth-child(4) > .image {
+  filter: grayscale(0);
+  transition: filter var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(4) > .content {
+  transform: translateY(100%);
+}
+
+.container:nth-child(4):hover .image {
+  filter: grayscale(1);
+}
+
+.container:nth-child(4):hover .content {
+  transform: translateY(0);
+}
+
+/* 5th */
+
+.container:nth-child(5) > .image {
+  transform: scale(1);
+  transition: transform var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(5) > .content {
+  opacity: 0;
+}
+
+.container:nth-child(5):hover .image {
+  transform: scale(1.1);
+}
+
+.container:nth-child(5):hover .content {
+  opacity: 1;
+  transition: opacity var(--transition-time) ease-in-out;
+}
+
+/* 6th */
+
+.container:nth-child(6) > .image {
+  filter: blur(0) grayscale(0);
+  transform: scale(1);
+  transition: transform, filter, var(--transition-time) ease-in-out;
+}
+
+.container:nth-child(6) > .content {
+  opacity: 0;
+}
+
+.container:nth-child(6):hover .image {
+  filter: blur(5px) grayscale(1);
+  transform: scale(1.1);
+}
+
+.container:nth-child(6):hover .content {
+  opacity: 1;
+  transition: opacity var(--transition-time) ease-in-out;
+}
+
+@media (min-width: 600px) {
+  .container > .content {
+    font-size: 1.7rem;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 400px) {
+  .container > .content {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+}
